@@ -6,9 +6,9 @@ node{
         echo 'Initialize Environment'
         mavenHome = tool name: 'maven' , type: 'maven'
         mavenCMD = "${mavenHome}/bin/mvn"
-        tag="3.0"
-	dockerHubUser="anujsharma1990"
-	containerName="insure-me"
+        tag="latest"
+	dockerHubUser="nileshk12"
+	containerName="insure"
 	httpPort="8081"
     }
     
@@ -29,7 +29,7 @@ node{
         sh "${mavenCMD} clean package"        
     }
     
-    stage('Publish Test Reports'){
+    //stage('Publish Test Reports'){
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
     }
     
