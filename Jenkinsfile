@@ -27,10 +27,6 @@ node {
         sh "mvn clean package"        
     }
     
-    //stage('Publish Test Reports'){
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
-    //}
-    
     stage('Docker Image Build') {
         echo 'Creating Docker image'
         sh "docker build -t $dockerHubUser/$containerName:$tag --pull --no-cache ."
